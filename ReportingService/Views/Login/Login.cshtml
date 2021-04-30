@@ -1,0 +1,37 @@
+﻿@model ReportingService.ViewModels.LoginModel;
+@{
+    ViewData["Title"] = "Вход";
+}
+<div class="container">
+    <div class="frame">
+        <div class="nav">
+            <ul class="links">  
+                <li class="signin-active"><a class="btn">Вход</a></li>
+                <li class="signup-inactive"><a class="btn" asp-action="Register" asp-controller="Register">Регистрация</a></li>
+            </ul>
+        </div>
+        <div ng-app ng-init="checked = false">
+            <form class="form-signin" asp-action="Login" asp-controller="Login" asp-anti-forgery="true">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Login" class="control-label">Логин</label>
+                    <input asp-for="Login" class="form-control form-styling" />
+                    <div><span asp-validation-for="Login" class="text-danger control-label"></span></div>
+                    
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label">Пароль</label>
+                    <input asp-for="Password" class="form-control form-styling" />
+                    <div><span asp-validation-for="Password" class="text-danger control-label"></span></div>
+                    
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Войти" class="btn btn-primary btn-signup" />
+                </div>
+            </form>
+        </div>
+        </div>
+    </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
